@@ -8,7 +8,9 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "fastapi>=0.116.1",
     "pydantic",
+    "uvicorn>=0.35.0",
 ]
 
 [build-system]

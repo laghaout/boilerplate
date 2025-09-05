@@ -1,36 +1,68 @@
 
 # Table of Contents
 
-1.  [Description](#org48e5bac)
-2.  [Input](#orgf9d70dc)
-3.  [Output](#org79e06ca)
-4.  [Usage](#orgf6be583)
-    1.  [`uv`](#orgdec8788)
+1.  [Description](#org0728856)
+2.  [Input](#orgd7fa8d3)
+3.  [Output](#orgf29f646)
+4.  [Usage](#org0a7dfd0)
+    1.  [`uv`](#orgb2af6a1)
+    2.  [FastAPI](#orgb6a6d39)
+        1.  [`uv`](#orge8845e1)
+        2.  [`curl`](#org7257cfe)
+        3.  [Browser](#org1eb0e5c)
 
 
 
-<a id="org48e5bac"></a>
+<a id="org0728856"></a>
 
 # Description
 
 
-<a id="orgf9d70dc"></a>
+<a id="orgd7fa8d3"></a>
 
 # Input
 
 
-<a id="org79e06ca"></a>
+<a id="orgf29f646"></a>
 
 # Output
 
 
-<a id="orgf6be583"></a>
+<a id="org0a7dfd0"></a>
 
 # Usage
 
 
-<a id="orgdec8788"></a>
+<a id="orgb2af6a1"></a>
 
 ## `uv`
 
     uv run -m boilerplate.main
+
+
+<a id="orgb6a6d39"></a>
+
+## FastAPI
+
+
+<a id="orge8845e1"></a>
+
+### `uv`
+
+    uv run uvicorn boilerplate.api:app --reload
+
+
+<a id="org7257cfe"></a>
+
+### `curl`
+
+    curl -X POST "http://127.0.0.1:8000/yob?current_year=2025" \
+      -H "Content-Type: application/json" \
+      -d '{"name":"Amine","age":44}'
+
+
+<a id="org1eb0e5c"></a>
+
+### Browser
+
+[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)

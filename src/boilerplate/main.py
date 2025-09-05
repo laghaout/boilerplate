@@ -2,7 +2,7 @@
 """
 Created on Fri Sep  5 19:44:24 2025
 
-@author: Amine
+@author: amine
 """
 
 try:
