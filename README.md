@@ -1,39 +1,36 @@
 
 # Table of Contents
 
-1.  [Description](#orgcfda542)
-2.  [Input](#org6d5282d)
-3.  [Output](#org8d06bbc)
-4.  [Usage](#orgf985cf4)
-    1.  [`uv`](#org97e0468)
+1.  [Description](#org48e5bac)
+2.  [Input](#orgf9d70dc)
+3.  [Output](#org79e06ca)
+4.  [Usage](#orgf6be583)
+    1.  [`uv`](#orgdec8788)
 
 
 
-<a id="orgcfda542"></a>
+<a id="org48e5bac"></a>
 
 # Description
 
 
-<a id="org6d5282d"></a>
+<a id="orgf9d70dc"></a>
 
 # Input
 
 
-<a id="org8d06bbc"></a>
+<a id="org79e06ca"></a>
 
 # Output
 
 
-<a id="orgf985cf4"></a>
+<a id="orgf6be583"></a>
 
 # Usage
 
 
-<a id="org97e0468"></a>
+<a id="orgdec8788"></a>
 
 ## `uv`
 
-\#+begin<sub>src</sub> python
-uv run -m boilerplate.main
-\#+end<sub>src</sub> python
-
+    uv run -m boilerplate.main

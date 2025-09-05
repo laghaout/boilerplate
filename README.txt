@@ -7,5 +7,4 @@
 ** =uv=
 #+begin_src python
 uv run -m boilerplate.main
-#+end_src python
-
+#+end_src
