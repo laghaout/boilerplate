@@ -1,0 +1,11 @@
+name,age,attributes
+Alice,25,"['smart', 'kind', 'athletic']"
+Bob,30,"['funny', 'tall', 'brave']"
+Charlie,22,"['creative', 'curious']"
+Diana,28,"['intelligent', 'thoughtful', 'friendly']"
+Ethan,35,"['organized', 'leader']"
+Fiona,27,"['adventurous', 'optimistic']"
+George,40,"['serious', 'loyal']"
+Hannah,23,"['cheerful', 'caring']"
+Ian,32,"['calm', 'analytical']"
+Julia,29,"['ambitious', 'empathetic']" 

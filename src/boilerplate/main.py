@@ -5,6 +5,7 @@ Created on Fri Sep  5 19:44:24 2025
 @author: amine
 """
 
+from pathlib import Path
 
 try:
     from . import schemas as dat
@@ -12,11 +13,19 @@ except Exception:
     import schemas as dat
 
 
-def main():
-    person = dat.Person(name="Amine", age=44)
-    return person
+ROOT = Path(__file__).resolve().parent.parents[1]
+
+def main() -> dict:
+    data = dat.Data(
+        # root_dir=ROOT.parts,
+        # config=["config", "config.json"],
+        )
+    data()
+    
+    return data
 
 
 if __name__ == "__main__":
-    person = main()
+    data = main()
+    person = dat.Person(name="Gunnar", age=67)
     person.disp()

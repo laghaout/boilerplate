@@ -1,20 +1,20 @@
 
 # Table of Contents
 
-1.  [To do](#orgd9b7d4a)
-2.  [Description](#orgd17c0df)
-3.  [Input](#org798f791)
-4.  [Output](#org3964172)
-5.  [Usage](#org53d5c42)
-    1.  [`uv`](#org2f8d5f5)
-    2.  [FastAPI](#orga55d1a2)
-        1.  [POST query](#org7e5ce88)
-        2.  [Get query](#org3e9a511)
-        3.  [Browser](#org5971a3e)
+1.  [To do](#org78bf5ec)
+2.  [Description](#org7d0760d)
+3.  [Input](#org3afd214)
+4.  [Output](#orgadc8d96)
+5.  [Usage](#orga5ab4a0)
+    1.  [`uv`](#org75b3b7b)
+    2.  [FastAPI](#org8561ad5)
+        1.  [POST query](#org9e2ffd6)
+        2.  [GET query](#org9af60dc)
+        3.  [Browser](#orgd80324b)
 
 
 
-<a id="orgd9b7d4a"></a>
+<a id="org78bf5ec"></a>
 
 # To do
 
@@ -22,34 +22,34 @@
 2.  [ ] Add tests to pre-commit
 
 
-<a id="orgd17c0df"></a>
+<a id="org7d0760d"></a>
 
 # Description
 
 
-<a id="org798f791"></a>
+<a id="org3afd214"></a>
 
 # Input
 
 
-<a id="org3964172"></a>
+<a id="orgadc8d96"></a>
 
 # Output
 
 
-<a id="org53d5c42"></a>
+<a id="orga5ab4a0"></a>
 
 # Usage
 
 
-<a id="org2f8d5f5"></a>
+<a id="org75b3b7b"></a>
 
 ## `uv`
 
     uv run -m boilerplate.main
 
 
-<a id="orga55d1a2"></a>
+<a id="org8561ad5"></a>
 
 ## FastAPI
 
@@ -58,7 +58,7 @@ Launch with `uv`:
     uv run uvicorn boilerplate.api:app --reload
 
 
-<a id="org7e5ce88"></a>
+<a id="org9e2ffd6"></a>
 
 ### POST query
 
@@ -67,16 +67,16 @@ Launch with `uv`:
       -d '{"name":"Amine","age":44}'
 
 
-<a id="org3e9a511"></a>
+<a id="org9af60dc"></a>
 
-### Get query
+### GET query
 
-[http://127.0.0.1:8000/yob?current<sub>year</sub>=2025&name=Amine&age=25](http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25)
+[`http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25`](http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25)
 
 
-<a id="org5971a3e"></a>
+<a id="orgd80324b"></a>
 
 ### Browser
 
-[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+[`http://127.0.0.1:8000/docs`](http://127.0.0.1:8000/docs)
 

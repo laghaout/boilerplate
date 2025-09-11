@@ -22,7 +22,7 @@ curl -X POST "http://127.0.0.1:8000/yob?current_year=2025" \
   -H "Content-Type: application/json" \
   -d '{"name":"Amine","age":44}'
 #+end_src
-*** Get query
-[[http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25][http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25]]
+*** GET query
+[[http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25][=http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25=]]
 *** Browser
-[[http://127.0.0.1:8000/docs][http://127.0.0.1:8000/docs]]
+[[http://127.0.0.1:8000/docs][=http://127.0.0.1:8000/docs=]]
