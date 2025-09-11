@@ -19,7 +19,10 @@ app = FastAPI(title="Boilerplate API", version="0.1.0")
 
 @app.get("/")
 def root():
-    return dict(some_key="some_value")
+    persons = dat.Persons()
+    persons()    
+    return persons.persons
+    # return dict(some_key="some_value")
 
 
 @app.post("/yob", response_model=dat.YobOutput)

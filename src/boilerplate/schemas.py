@@ -5,16 +5,17 @@ Created on Fri Sep  5 19:45:42 2025
 @author: amine
 """
 
+import ast
 import json
 from pathlib import Path
 from pydantic import BaseModel, Field, TypeAdapter
 from types import SimpleNamespace
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 class Person(BaseModel):
     name: str
     age: int
-    attributes: str | Optional[list] = []
+    attributes: List[str] = None
 
     def disp(self):
         print(f"{self.name} is {self.age} years old.")
@@ -31,8 +32,8 @@ class Person(BaseModel):
         return self.attributes[position]
 
 
-class Data(BaseModel):
-    persons: List[Person] = None
+class Persons(BaseModel):
+    persons: Dict[int | str, Person] = None
     root_dir: object | List[str] = Path(__file__).resolve().parent.parents[1]
     config: dict | List[str] = ["config", "config.json"]
 
@@ -52,9 +53,11 @@ class Data(BaseModel):
     def __call__(self):
         import pandas as pd
         df = pd.read_csv(self.root_dir / self.config.data)
+        df["attributes"] = df["attributes"].apply(ast.literal_eval)
         records = df.to_dict(orient="records")
         adapter = TypeAdapter(List[Person])
-        self.persons = adapter.validate_python(records)
+        self.persons = {
+            k: v for k, v in enumerate(adapter.validate_python(records))}
 
 
 

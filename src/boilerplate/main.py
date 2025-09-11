@@ -12,13 +12,13 @@ except Exception:
 
     
 def main() -> dict:
-    data = dat.Data()
-    data()
+    persons = dat.Persons()
+    persons()
     
-    return data
+    return persons
 
 
 if __name__ == "__main__":
-    data = main()
-    person = dat.Person(name="Gunnar", age=67)
+    persons = main()
+    person = dat.Person(name="Olof", age=67)
     person.disp()
