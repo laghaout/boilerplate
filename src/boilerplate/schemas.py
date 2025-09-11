@@ -10,20 +10,26 @@ import json
 from pathlib import Path
 from pydantic import BaseModel, Field, TypeAdapter
 from types import SimpleNamespace
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
+
+try:
+    from . import utilities as util
+except Exception:
+    import utilities as util
 
 class Person(BaseModel):
     name: str
-    age: int
+    yob: int
     attributes: List[str] = None
+    age: Optional[int] = None
 
     def disp(self):
-        print(f"{self.name} is {self.age} years old.")
+        util.disp(f"{self.name} was born in {self.yob}.")
 
-    def yob(self, current_year: int) -> int:
-        year_of_birth = current_year - self.age
-        print(f"{self.name}'s year of birth is {year_of_birth}.")
-        return year_of_birth
+    def get_age(self, current_year: int) -> int:
+        age = current_year - self.yob
+        util.disp(f"{self.name} is {age} years old.")
+        return age
     
     def add_attribute(self, attribute: object):
         self.attributes.append(attribute)
@@ -47,21 +53,46 @@ class Persons(BaseModel):
                 self.config = json.load(file)
                 
         self.config = SimpleNamespace(**self.config)
-        self.config.data = Path(*self.config.data)
-        
+        self.config.data = self.root_dir / Path(*self.config.data)
+        self.config.output = self.root_dir / Path(*self.config.output)
         
     def __call__(self):
         import pandas as pd
-        df = pd.read_csv(self.root_dir / self.config.data)
+        df = pd.read_csv(self.config.data)
         df["attributes"] = df["attributes"].apply(ast.literal_eval)
         records = df.to_dict(orient="records")
         adapter = TypeAdapter(List[Person])
         self.persons = {
             k: v for k, v in enumerate(adapter.validate_python(records))}
 
-
-
+    def save_persons(self, directory: list=None, filename: str="persons.json"):
+        if directory is None:
+            directory = self.config.output
+        else:
+            directory = Path(*directory)
+        directory.mkdir(parents=True, exist_ok=True)
+        path = directory / Path(*[filename])
+        
+        persons: Dict[str, Person] = {
+            str(k): v for k, v in (self.persons or {}).items()
+        }
+    
+        persons = TypeAdapter(Dict[str, Person]).dump_json(persons, indent=2)
+        path.write_bytes(persons)
+        
+    @staticmethod
+    def load_persons(directory: list | None = None, filename: str = "persons.json") -> Dict[str, Person]:
+   
+        path = Path(*directory) / Path(*[filename])
+        if not path.exists():
+            raise FileNotFoundError(f"No saved persons file found at {path}")
+    
+        data = path.read_bytes()
+        persons = TypeAdapter(Dict[str, Person]).validate_json(data)
+    
+        return persons        
+        
 #%% FastAPI wrappers
     
-class YobOutput(BaseModel):
-    year_of_birth: int = Field(..., description="Computed year of birth")    
+class Output_age(BaseModel):
+    age: int = Field(..., description="Computed age")    

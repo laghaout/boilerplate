@@ -6,6 +6,7 @@ PACKAGE="boilerplate"
 rm -f *~
 
 # Remove Python cache
+rm -rf "output"
 rm -rf "__pycache__"
 rm -rf "src/${PACKAGE}/__pycache__"
 

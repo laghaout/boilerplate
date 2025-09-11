@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
 Created on Fri Sep  5 21:37:41 2025
 
@@ -22,46 +23,34 @@ def root():
     persons = dat.Persons()
     persons()    
     return persons.persons
-    # return dict(some_key="some_value")
 
 
-@app.post("/yob", response_model=dat.YobOutput)
-def yob(
+@app.post("/yob", response_model=dat.Output_age)
+def get_age_POST(
     person: dat.Person,
     current_year: int = Query(
         ..., ge=0, description="Calendar year to compute from"),
 ):
     try:
-        year_of_birth = person.yob(current_year)
-        return dat.YobOutput(year_of_birth=year_of_birth)
+        age = person.get_age(current_year)
+        return dat.Output_age(age=age)
     except Exception as e:
         # Keep behavior clear if the model method raises
         raise HTTPException(
-            status_code=500, detail=f"Person.yob() failed: {e}")
+            status_code=500, detail=f"Person.get_age() failed: {e}")
 
 
-@app.get("/yob", response_model=dat.YobOutput)
-def yob(
+@app.get("/yob", response_model=dat.Output_age)
+def get_age_GET(
     name: str,
-    age: int = Query(..., ge=0, description="Age in full years"),
+    yob: int = Query(..., ge=0, description="Year of birth"),
     current_year: int = Query(
         ..., ge=0, description="Calendar year to compute from"),
 ):
     try:
-        person = dat.Person(name=name, age=age)
-        year_of_birth = person.yob(current_year)
-        return dat.YobOutput(year_of_birth=year_of_birth)
+        person = dat.Person(name=name, yob=yob)
+        age = person.get_age(current_year)
+        return dat.Output_age(age=age)
     except Exception as e:
         raise HTTPException(
-            status_code=500, detail=f"Person.yob() failed: {e}")
-
-@app.post("/add_attribute")
-def add_attribute(person: dat.Person, attribute: object):
-    person.add_attribute(attribute)
-    return person.attributes
-
-@app.get("/get_attribute_at")
-def get_attribute_at(person: dat.Person, position: int):
-    return person.get_attribute_at(position)
-    
-    
+            status_code=500, detail=f"Person.get_age() failed: {e}")    

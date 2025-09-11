@@ -21,9 +21,9 @@ uv run uvicorn boilerplate.api:app --reload
 #+begin_src bash :results output
 curl -X POST "http://127.0.0.1:8000/yob?current_year=2025" \
   -H "Content-Type: application/json" \
-  -d '{"name":"Amine","age":44}'
+  -d '{"name":"Olof","age":1958}'
 #+end_src
 *** GET query
-[[http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25][=http://127.0.0.1:8000/yob?current_year=2025&name=Amine&age=25=]]
+[[http://127.0.0.1:8000/yob?current_year=2025&name=Olof&yob=1958][=http://127.0.0.1:8000/yob?current_year=2025&name=Olof&yob=1958=]]
 *** Browser
 [[http://127.0.0.1:8000/docs][=http://127.0.0.1:8000/docs=]]
