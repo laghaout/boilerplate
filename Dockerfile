@@ -22,3 +22,7 @@ COPY run.sh ./run.sh
 COPY tests ./tests
 
 CMD ["python", "-m", "boilerplate.main"]
+
+# EXPOSE 8000
+# CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
+# docker run -p 8000:8000 boilerplate
