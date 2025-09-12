@@ -25,7 +25,7 @@ def root():
     return persons.persons
 
 
-@app.post("/yob", response_model=dat.Output_age)
+@app.post("/age", response_model=dat.Output_age)
 def get_age_POST(
     person: dat.Person,
     current_year: int = Query(
@@ -40,7 +40,7 @@ def get_age_POST(
             status_code=500, detail=f"Person.get_age() failed: {e}")
 
 
-@app.get("/yob", response_model=dat.Output_age)
+@app.get("/age", response_model=dat.Output_age)
 def get_age_GET(
     name: str,
     yob: int = Query(..., ge=0, description="Year of birth"),
