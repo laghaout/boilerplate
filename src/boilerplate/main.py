@@ -12,22 +12,22 @@ except Exception:
     import schemas as dat
     import utilities as util
 
-    
+
 def main() -> dict:
-    persons = dat.Persons()     # Initialize
-    persons()                   # ETL
-    persons.engineer()          # Engineer the feature vectors
+    persons = dat.Persons()  # Initialize
+    persons()  # ETL
+    persons.engineer()  # Engineer the feature vectors
     # persons.explore()           # Explore the data
-    persons.save()              # Save to disk
+    persons.save()  # Save to disk
 
     # Create some random person.
     person = dat.Person(name="Olof", yob=1958)
     person.disp()
-    
+
     return persons
 
 
 if __name__ == "__main__":
-    persons = main()
+    # persons = main()
     reloaded = dat.Persons.load()
     util.close_loggers()
