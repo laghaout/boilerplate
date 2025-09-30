@@ -17,7 +17,7 @@ def main() -> dict:
     persons = dat.Persons()  # Initialize
     persons()  # ETL
     persons.engineer()  # Engineer the feature vectors
-    # persons.explore()           # Explore the data
+    # persons.explore()  # Explore the data
     persons.save()  # Save to disk
 
     # Create some random person.
@@ -28,6 +28,10 @@ def main() -> dict:
 
 
 if __name__ == "__main__":
-    # persons = main()
-    reloaded = dat.Persons.load()
+    
+    try:
+        reloaded = dat.Persons.load()
+        persons = reloaded.pop("persons_pkl")
+    except Exception:
+        persons = main()
     util.close_loggers()
